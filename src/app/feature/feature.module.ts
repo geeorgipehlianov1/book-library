@@ -5,6 +5,9 @@ import { AddBookComponent } from './add-book/add-book.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -17,7 +20,13 @@ import { EditComponent } from './edit/edit.component';
     EditComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  exports: [
+    DetailsComponent,
   ]
 })
 export class FeatureModule { }

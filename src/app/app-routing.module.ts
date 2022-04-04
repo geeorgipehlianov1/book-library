@@ -7,6 +7,8 @@ import { ContactsComponent } from './core/contacts/contacts.component';
 import { HomePageComponent } from './core/home-page/home-page.component';
 import { AddBookComponent } from './feature/add-book/add-book.component';
 import { AllBooksComponent } from './feature/all-books/all-books.component';
+import { DetailsComponent } from './feature/details/details.component';
+import { EditComponent } from './feature/edit/edit.component';
 import { MyProfileComponent } from './feature/my-profile/my-profile.component';
 
 const routes: Routes = [
@@ -41,6 +43,18 @@ const routes: Routes = [
   {
     path: 'my-profile',
     component: MyProfileComponent
+  },
+  {
+    path: 'singing-in',
+    redirectTo: 'home'
+  },
+  {
+    path: 'edit/:id',
+    component: EditComponent
+  },
+  {
+    path: 'details/:id',
+    component: DetailsComponent
   }
 ];
 

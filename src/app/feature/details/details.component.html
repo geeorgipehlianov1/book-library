@@ -1,1 +1,7 @@
-<p>details works!</p>
+<div *ngIf="book">
+    <ul>
+        <li>{{book.title}}</li>
+        <li>{{book.type}}</li>
+        <li>{{book.description}}</li>
+    </ul>
+</div>
