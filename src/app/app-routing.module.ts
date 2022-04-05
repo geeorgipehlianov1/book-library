@@ -45,10 +45,6 @@ const routes: Routes = [
     component: MyProfileComponent
   },
   {
-    path: 'singing-in',
-    redirectTo: 'home'
-  },
-  {
     path: 'edit/:id',
     component: EditComponent
   },
