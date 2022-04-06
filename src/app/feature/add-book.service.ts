@@ -8,11 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class AddBookService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,) { }
 
   addBook(bookData: {title: string, description: string, imageUrl: string, type: string}): Observable<IBook> {
-    return this.http.post<IBook>('http://localhost:3030/data/books', bookData, {
-      
-    });
+    return this.http.post<IBook>('http://localhost:3030/data/books', bookData);
   }
 }

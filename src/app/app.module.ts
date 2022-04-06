@@ -10,6 +10,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { HomePageComponent } from './core/home-page/home-page.component';
 import { FeatureModule } from './feature/feature.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FeatureModule } from './feature/feature.module';
     AppRoutingModule,
     CoreModule,
     AuthenticationModule,
-    FeatureModule
+    FeatureModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

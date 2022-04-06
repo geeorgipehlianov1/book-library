@@ -4,7 +4,7 @@
             <p class="logo"><span class="logo">SoftUni Forum</span></p>
         </div>
         <!-- For public part -->
-        <div class="mini-navbar">
+        <div class="mini-navbar" *ngIf="hasUser == false" >
             <ul>
                 <li>
                     <a routerLink="/home">Home Page</a>
@@ -25,7 +25,7 @@
         </div>
     </div>
     
-    <ng-container *ngIf="!!hasUser">
+    <ng-container *ngIf="hasUser == true">
         <nav>
             <ul>
                 <li>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,17 +13,17 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.checkForUser();
+   
   }
 
-  checkForUser(): void {
+  onUser(): void {
     const data = localStorage.getItem('userData');
-    console.log(data);
-    
-    if(data != null) {
+    if(data) {
       this.hasUser = true;
     } 
+    console.log(this.hasUser);
   }
+
 
   logOut(): void {
     localStorage.removeItem('userData')

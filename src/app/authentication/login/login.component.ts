@@ -20,7 +20,7 @@ export class LoginComponent implements AfterViewInit {
  }
 
  onSubmit(): void {
-  const email = this.loginForm.value.email;
+    const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
     
     const userData = {
@@ -29,7 +29,14 @@ export class LoginComponent implements AfterViewInit {
     }
 
     this.userService.login(userData).subscribe(data => {
-      console.log(data);
+      // let userData = {
+      //   email: data.email,
+      //   password: data.password,
+      //   _id: data._id,
+      //   token: data.accessToken
+      // }
+      localStorage.setItem('userData', JSON.stringify(data))
+      this.router.navigate(['/home'])
     })
  }
 

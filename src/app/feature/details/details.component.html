@@ -3,5 +3,7 @@
         <li>{{book.title}}</li>
         <li>{{book.type}}</li>
         <li>{{book.description}}</li>
+        <button (click)="onDelete()">Delete</button>
+        <a [routerLink]="['/edit', book._id]">Edit</a>
     </ul>
 </div>

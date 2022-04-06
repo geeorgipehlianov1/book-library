@@ -6,7 +6,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 
 
@@ -26,6 +26,6 @@ import { HttpClientModule } from '@angular/common/http'
   exports: [
     FooterComponent,
     HeaderComponent
-  ]
+  ],
 })
 export class CoreModule { }
