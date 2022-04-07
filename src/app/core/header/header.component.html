@@ -1,10 +1,42 @@
 <header>
-    <div class="mini-navbar-wrap">
+    <div class="mini-navbar-wrap" *ngIf="hasUser == true">
         <div class="logo-wrap">
             <p class="logo"><span class="logo">Book Library</span></p>
         </div>
         <!-- For public part -->
-        <div class="mini-navbar" *ngIf="hasUser == false" >
+        <div class="mini-navbar">
+            <ul>
+                <li>
+                    <a routerLink="/home">Home Page</a>
+                </li>
+                <li>
+                    <a routerLink="/add-book">Add Book</a>
+                </li>
+                 <li>
+                        <a routerLink="/all-books">All Books</a>
+                    </li>
+                    <li>
+                        <a routerLink="/my-profile">My Profile</a>
+                    </li> 
+                 <li>
+                        <a routerLink="/about">About</a>
+                    </li>
+                    <li>
+                        <a routerLink="/contacts">Contacts</a>
+                    </li> 
+                <li>
+                    <button (click)="logOut()">Log Out</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mini-navbar-wrap" *ngIf="hasUser == false">
+        <div class="logo-wrap">
+            <p class="logo"><span class="logo">Book Library</span></p>
+        </div>
+        <!-- For public part -->
+        <div class="mini-navbar">
             <ul>
                 <li>
                     <a routerLink="/home">Home Page</a>
@@ -13,7 +45,7 @@
                     <a routerLink="/register">Register</a>
                 </li>
                 <li>
-                    <a routerLink="/login" >Login</a>
+                    <a routerLink="/login">Login</a>
                 </li>
                 <li>
                     <a routerLink="/about">About</a>
@@ -24,23 +56,4 @@
             </ul>
         </div>
     </div>
-    
-    <ng-container *ngIf="hasUser == true">
-        <nav>
-            <ul>
-                <li>
-                    <a routerLink="/add-book">Add Book</a>
-                </li>
-                <li>
-                    <a routerLink="/all-books">All Books</a>
-                </li>
-                <li>
-                    <a routerLink="/my-profile">My Profile</a>
-                </li>
-                <li>
-                    <button (click)="logOut()">Log Out</button>
-                </li>
-            </ul>
-        </nav>
-    </ng-container>
-    </header>
+</header>

@@ -17,18 +17,16 @@ export class HeaderComponent implements OnInit {
   }
   
   onUser(): void {
-    const data = localStorage.getItem('userData');
-    console.log(data);
-    
+    const data = localStorage.getItem('userData');    
     if(data != null) {
       this.hasUser = true;
     } 
-    console.log(this.hasUser);
   }
 
 
   logOut(): void {
     localStorage.removeItem('userData')
+    window.location.reload();
     this.router.navigate(['/home'])
   }
 

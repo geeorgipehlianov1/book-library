@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { IBook } from 'interfaces/books';
+import { GetAllBooksService } from 'src/app/shared/get-all-books.service';
 import { EditBookService } from '../edit-book.service';
 import { GetBookByIdService } from '../get-book-by-id.service';
 
@@ -11,20 +12,17 @@ import { GetBookByIdService } from '../get-book-by-id.service';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements AfterViewInit {
+export class EditComponent {
 
   @ViewChild('editForm') editForm!: NgForm;
 
   book!: IBook
 
-  constructor(private bookService: EditBookService, private router: ActivatedRoute, private route: Router) { }
-
-  ngAfterViewInit(): void {
-    const id = this.router.snapshot.params['id']
-    // this.bookService.loadBookById(id).subscribe(book => {
-    //   this.book = book;
-    // })   
-  }
+  constructor(private bookService: EditBookService,
+              private router: ActivatedRoute,
+              private route: Router,
+              private loadBooksService: GetBookByIdService
+    ) { }
   
 
   onSubmit(): void {
@@ -42,7 +40,7 @@ export class EditComponent implements AfterViewInit {
       type
     }
     this.bookService.editBook(id, bookData).subscribe(() => {
-      this.route.navigate(['/home'])
+      this.route.navigate(['/all-books'])
     })
     
   }
