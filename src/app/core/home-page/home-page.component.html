@@ -2,10 +2,9 @@
     <p>Loading...</p>
 </div>
 
-<div *ngFor="let book of books"> 
-    <li>{{book.title}}</li>
-    <li>{{book.description}}</li>
-    <li>{{book.type}}</li>
+
+<li *ngFor="let book of books" ngClass="otherBooks">
+    <h3>{{book.title}}</h3>
+    <p>Type: {{book.type}}</p>
     <a [routerLink]="['/details', book._id]">Details</a>
-    <br>
-</div>
+</li>

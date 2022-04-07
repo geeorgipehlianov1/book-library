@@ -15,6 +15,7 @@ import { GetBookByIdService } from '../get-book-by-id.service';
 export class DetailsComponent implements OnInit {
 
   book!: IBook
+  isOwner: boolean = false;
 
   constructor(private bookService: GetBookByIdService, private router: ActivatedRoute, private deleteBookService: DeleteService,
     private route: Router) { }
@@ -24,18 +25,23 @@ export class DetailsComponent implements OnInit {
 
     this.bookService.loadBookById(id).subscribe(book => {
       this.book = book;
+      const user = JSON.parse(localStorage.getItem('userData')!)
+      if(book._ownerId === user._id) {
+        this.isOwner = true;
+      }
     })
   }
 
   onDelete(): void {
     const id = this.router.snapshot.params['id'];
     console.log(id);
-    this.deleteBookService.deleteBook(id).subscribe(() => {
-      console.log('deleted');
-      this.route.navigate(['/home'])
+    const choice = confirm('Are you sure you want to delete this book?')
+    
+    if(choice) {
+      this.deleteBookService.deleteBook(id).subscribe(data => {
+        this.route.navigate(['/all-books'])
     })
   }
 
-  
-
+  }
 }

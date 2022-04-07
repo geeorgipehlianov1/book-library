@@ -35,7 +35,7 @@ export class AddBookComponent implements OnInit {
     
 
    this.bookService.addBook(bookData).subscribe(data => {
-     this.router.navigate(['/home'])
+     this.router.navigate(['/details', data._id])
    })
     
   }

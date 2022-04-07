@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { IBook } from 'interfaces/books';
 import { GetAllBooksService } from '../../shared/get-all-books.service';
 
@@ -17,6 +17,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.bookService.getAllBooks().subscribe(book => {
       this.books = book;   
+      this.books.splice(3)
     })
   }
 

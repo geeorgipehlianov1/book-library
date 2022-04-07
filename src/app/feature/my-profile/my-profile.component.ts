@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyProfileComponent implements OnInit {
 
+
+
+  email!: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('userData')!);
+    this.email = user.email
   }
 
 }

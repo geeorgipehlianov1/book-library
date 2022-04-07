@@ -1,9 +1,28 @@
-<div *ngIf="book">
+<!-- <div *ngIf="book">
     <ul>
         <li>{{book.title}}</li>
         <li>{{book.type}}</li>
         <li>{{book.description}}</li>
-        <button (click)="onDelete()">Delete</button>
-        <a [routerLink]="['/edit', book._id]">Edit</a>
+        <ng-container *ngIf="isOwner">
+            <button (click)="onDelete()">Delete</button>
+            <a [routerLink]="['/edit', book._id]">Edit</a>
+        </ng-container>
     </ul>
-</div>
+</div> -->
+
+<section *ngIf="book" id="details-page" ngClass="details">
+    <div ngClass="book-information">
+        <h3>{{book.title}}</h3>
+        <p ngClass="type">Type: {{book.type}}</p>
+    </div>
+    <div ngClass="book-description">
+        <h3>Description:</h3>
+        <p>{{book.description}}</p>
+    </div>
+    <div ngClass="actions">
+        <ng-container *ngIf="isOwner">
+        <a ngClass="button"[routerLink]="['/edit', book._id]">Edit</a>
+        <a ngClass="button" (click)="onDelete()">Delete</a>
+    </ng-container>
+    </div>
+</section>
