@@ -10,3 +10,7 @@
     box-shadow: -8px -2px 28px -8px #000000;
     align-items: center;
 }
+
+div {
+    padding-top: 100px;
+}

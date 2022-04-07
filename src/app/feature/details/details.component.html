@@ -12,7 +12,8 @@
 
 <section *ngIf="book" id="details-page" ngClass="details">
     <div ngClass="book-information">
-        <h3>{{book.title}}</h3>
+        <h3>Title:</h3>
+        <p>{{book.title}}</p>
         <p ngClass="type">Type: {{book.type}}</p>
     </div>
     <div ngClass="book-description">

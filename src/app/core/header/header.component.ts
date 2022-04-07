@@ -15,8 +15,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
    this.onUser();
   }
-
-    onUser(): void {
+  
+  onUser(): void {
     const data = localStorage.getItem('userData');
     console.log(data);
     
@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
 
   logOut(): void {
     localStorage.removeItem('userData')
-    this.router.navigate(['/login'])
+    this.router.navigate(['/home'])
   }
 
 }

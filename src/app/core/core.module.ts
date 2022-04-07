@@ -6,7 +6,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorPageComponent } from './error-page/error-page.component'
 
 
 
@@ -16,7 +17,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
     FooterComponent,
     HeaderComponent,
     AboutComponent,
-    ContactsComponent
+    ContactsComponent,
+    ErrorPageComponent
   ],
   imports: [
     CommonModule,
