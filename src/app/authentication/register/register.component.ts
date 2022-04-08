@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterService } from '../register.service';
 
@@ -8,30 +8,45 @@ import { RegisterService } from '../register.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements AfterViewInit {
+export class RegisterComponent  {
 
-  @ViewChild('registerForm') registerForm!: NgForm
+  registerFormGroup: FormGroup = this.formBuilder.group({
+    'email': new FormControl('', [Validators.required]),
+    'password': new FormControl('', [Validators.required]),
+    'rePass': new FormControl('')
+  })
 
-  constructor(private userService: RegisterService, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: RegisterService, 
+    private router: Router) { }
 
-  ngAfterViewInit(): void {
-
-  }
 
   onSubmit(): void {
-    const email = this.registerForm.value.email;
-    const password = this.registerForm.value.password;
-    
-    const userData = {
-      email, 
-      password
-    }
 
-    this.userService.register(userData).subscribe(data => {
-      console.log(data);
-      localStorage.setItem('userData', JSON.stringify(data))
-      this.router.navigate(['/home'])
-    })
+    const email = this.registerFormGroup.value['email'];
+    const password = this.registerFormGroup.value.password;
+    const rePass = this.registerFormGroup.value.rePass;
+
+    const userData = {
+          email, 
+          password
+        }
+
+    if(password == rePass) {
+      const userData = {
+        email, 
+        password
+      }
+  
+      this.userService.register(userData).subscribe(data => {
+        localStorage.setItem('userData', JSON.stringify(data))
+        this.router.navigate(['/home'])
+      })
+    
+    } else {
+      alert('Passwords dont\'t match!')
+    }
   }
 
 }

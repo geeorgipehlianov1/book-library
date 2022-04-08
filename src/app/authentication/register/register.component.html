@@ -1,12 +1,22 @@
 <div>
     <h1>Register</h1>
-    <form (ngSubmit)="onSubmit()"  #registerForm="ngForm">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerFormGroup">
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" ngModel>
+        <input formControlName="email" type="text" name="email" id="email">
+        <ng-container *ngIf="registerFormGroup.controls['email'].touched && registerFormGroup.controls['email'].invalid">
+            <p *ngIf="registerFormGroup.controls['email'].errors?.['required']">
+                Email is required!
+            </p>
+        </ng-container>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" ngModel>
+        <input formControlName="password" type="password" name="password" id="password">
+        <ng-container *ngIf="registerFormGroup.controls['password'].touched && registerFormGroup.controls['password'].invalid">
+            <p *ngIf="registerFormGroup.controls['password'].errors?.['required']">
+                Password is required!
+            </p>
+        </ng-container>
         <label for="rePass">Repeate Password</label>
-        <input type="password" name="rePass" id="rePass" ngModel>
-        <button>Submit</button>
+        <input formControlName="rePass" type="password" name="rePass" id="rePass">
+        <button [disabled]="registerFormGroup.invalid">Submit</button>
     </form>
 </div>

@@ -1,11 +1,22 @@
 <div>
     <h1>Login</h1>
-    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginFromGroup">
         <label for="email">Email:</label>
-        <input type="text" name="email" id="email" ngModel>
+        <input formControlName="email" type="text" name="email" id="email">
+        <p *ngIf="loginFromGroup.controls['email'].touched && loginFromGroup.controls['email'].invalid">
+            Email is required!
+        </p>
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password" ngModel>
-        <button>Submit</button>
+        <input formControlName="password" type="password" name="password" id="password">
+        <ng-container *ngIf="loginFromGroup.controls['password'].touched  && loginFromGroup.controls['password'].invalid">
+            <p *ngIf="loginFromGroup.controls['password'].errors?.['required']">
+                Password is required!
+            </p>
+          </ng-container>
+          <p *ngIf="loginFromGroup.controls['password'].errors?.['minLength']">
+            Password must be at least 3 characters long!
+        </p>
+        <button [disabled]="loginFromGroup.invalid">Submit</button>
     </form>
     <p>If you don't have registration you can quickly do it now</p>
     <a routerLink="/register">Register</a>

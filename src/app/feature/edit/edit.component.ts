@@ -39,9 +39,13 @@ export class EditComponent {
       imageUrl,
       type
     }
-    this.bookService.editBook(id, bookData).subscribe(() => {
-      this.route.navigate(['/all-books'])
-    })
+
+    const choice = confirm('Are you sure you want to update this book?')
+    if(choice) {
+      this.bookService.editBook(id, bookData).subscribe(data => {
+        this.route.navigate(['/details', data._id])
+      })
+    }
     
   }
 

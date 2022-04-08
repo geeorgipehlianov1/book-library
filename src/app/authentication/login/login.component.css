@@ -36,6 +36,10 @@ button:hover {
   background-color: #45a049;
 }
 
+p {
+    text-decoration: red;
+}
+
 div {
   border-radius: 5px;
   padding: 150px;

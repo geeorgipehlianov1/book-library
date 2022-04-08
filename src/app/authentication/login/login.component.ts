@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 
@@ -9,24 +9,33 @@ import { LoginService } from '../login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements AfterViewInit {
+export class LoginComponent {
 
   @ViewChild('loginForm') loginForm!: NgForm
 
-  constructor(private userService: LoginService, private router: Router) { }
+  loginFromGroup: FormGroup = this.formBuilder.group({
+    'email': new FormControl('', [Validators.required]),
+    'password': new FormControl('', [Validators.required, Validators.minLength(3)])
+  })
 
- ngAfterViewInit(): void {
-     
- }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: LoginService, 
+    private router: Router) { }
+
 
  onSubmit(): void {
-    const email = this.loginForm.value.email;
-    const password = this.loginForm.value.password;
+    const email = this.loginFromGroup.value.email;
+    const password = this.loginFromGroup.value['password'];
+    
     
     const userData = {
       email, 
       password
     }
+
+    console.log(userData);
+    
 
     this.userService.login(userData).subscribe(data => {
       // let userData = {
