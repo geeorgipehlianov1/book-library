@@ -33,18 +33,16 @@ export class LoginComponent {
       email, 
       password
     }
-
-    console.log(userData);
     
-
     this.userService.login(userData).subscribe(data => {
-      // let userData = {
-      //   email: data.email,
-      //   password: data.password,
-      //   _id: data._id,
-      //   token: data.accessToken
-      // }
+      let userData = {
+        email: data.email,
+        password: data.password,
+        _id: data._id,
+        token: data.accessToken
+      }
       localStorage.setItem('userData', JSON.stringify(data))
+
       this.router.navigate(['/home'])
     })
  }

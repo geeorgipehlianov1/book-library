@@ -31,17 +31,6 @@ export class MyProfileComponent implements OnInit {
     
   }
 
-  onDelete(): void {
-    const id = this.router.snapshot.params['id'];
-    console.log(id);
-    const choice = confirm('Are you sure you want to delete this book?')
-    
-    if(choice) {
-      this.deleteBookService.deleteBook(id).subscribe(data => {
-        this.route.navigate(['/all-books'])
-    })
-  }
-
-  }
+  
 
 }

@@ -4,7 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ResponseHandelInterceptor } from './response-handel.interceptor';
 
 
 
@@ -19,5 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     ReactiveFormsModule,
   ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseHandelInterceptor,
+      multi: true,
+    }
+  ]
 })
 export class AuthenticationModule { }

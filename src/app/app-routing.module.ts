@@ -56,10 +56,12 @@ const routes: Routes = [
   },
   {
     path: 'edit/:id',
+    canActivate: [HasUserGuard],
     component: EditComponent
   },
   {
     path: 'details/:id',
+    canActivate: [HasUserGuard],
     component: DetailsComponent
   },
   {

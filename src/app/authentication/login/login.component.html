@@ -13,9 +13,6 @@
                 Password is required!
             </p>
           </ng-container>
-          <p *ngIf="loginFromGroup.controls['password'].errors?.['minLength']">
-            Password must be at least 3 characters long!
-        </p>
         <button [disabled]="loginFromGroup.invalid">Submit</button>
     </form>
     <p>If you don't have registration you can quickly do it now</p>
