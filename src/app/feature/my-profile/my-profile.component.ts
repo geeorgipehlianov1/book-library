@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IBook } from 'interfaces/books';
 import { map } from 'rxjs';
@@ -18,12 +19,16 @@ export class MyProfileComponent implements OnInit {
   
   email!: string;
   
-  constructor(private bookService: GetAllBooksService, private deleteBookService: DeleteService,
-    private route: Router, private router: ActivatedRoute) { }
+  constructor(private bookService: GetAllBooksService,
+     private deleteBookService: DeleteService,
+    private route: Router,
+     private router: ActivatedRoute,
+     private titleService: Title) { }
     
     ngOnInit(): void {
       const user = JSON.parse(localStorage.getItem('userData')!);
       this.email = user.email
+      this.titleService.setTitle(user.email)
       this.bookService.getAllBooks().subscribe(book => {
         this.books = book;
         this.finalBooks = this.books.filter(book => book._ownerId == user._id)

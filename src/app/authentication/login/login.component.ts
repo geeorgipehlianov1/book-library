@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 
@@ -9,7 +10,7 @@ import { LoginService } from '../login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   @ViewChild('loginForm') loginForm!: NgForm
 
@@ -21,8 +22,16 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private userService: LoginService, 
-    private router: Router) { }
+    private router: Router,
+    private titleService: Title ) { }
 
+    public setTitle(): void {
+      this.titleService.setTitle('Login Page')
+    }
+
+    ngOnInit(): void {
+        this.setTitle();
+    }
 
  onSubmit(): void {
     const email = this.loginFromGroup.value.email;

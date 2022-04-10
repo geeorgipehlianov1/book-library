@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { IBook } from 'interfaces/books';
@@ -17,8 +18,11 @@ export class DetailsComponent implements OnInit {
   book!: IBook
   isOwner: boolean = false;
 
-  constructor(private bookService: GetBookByIdService, private router: ActivatedRoute, private deleteBookService: DeleteService,
-    private route: Router) { }
+  constructor(private bookService: GetBookByIdService, 
+    private router: ActivatedRoute, 
+    private deleteBookService: DeleteService,
+    private route: Router,
+    private titleService: Title) { }
 
   ngOnInit(): void {
     const id = this.router.snapshot.params['id'];
@@ -29,6 +33,7 @@ export class DetailsComponent implements OnInit {
       if(book._ownerId === user._id) {
         this.isOwner = true;
       }
+      this.titleService.setTitle(book.title)
     })
   }
 

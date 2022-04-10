@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RegisterService } from '../register.service';
 
@@ -8,7 +9,7 @@ import { RegisterService } from '../register.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent  {
+export class RegisterComponent implements OnInit  {
 
   registerFormGroup: FormGroup = this.formBuilder.group({
     'email': new FormControl('', [Validators.required]),
@@ -19,7 +20,16 @@ export class RegisterComponent  {
   constructor(
     private formBuilder: FormBuilder,
     private userService: RegisterService, 
-    private router: Router) { }
+    private router: Router,
+    private titleService: Title) { }
+
+    public setTitle(): void {
+      this.titleService.setTitle('Register Page')
+    }
+
+    ngOnInit(): void {
+        this.setTitle()
+    }
 
 
   onSubmit(): void {

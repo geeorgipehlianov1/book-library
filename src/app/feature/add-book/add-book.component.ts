@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AddBookService } from '../add-book.service';
 
@@ -12,9 +13,12 @@ export class AddBookComponent implements OnInit {
 
   @ViewChild('createForm') createForm!: NgForm
 
-  constructor(private bookService: AddBookService, private router: Router) { }
+  constructor(private bookService: AddBookService, 
+    private router: Router,
+    private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Add Book')
   }
 
   onSubmit(): void {
