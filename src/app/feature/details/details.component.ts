@@ -34,7 +34,6 @@ export class DetailsComponent implements OnInit {
 
   onDelete(): void {
     const id = this.router.snapshot.params['id'];
-    console.log(id);
     const choice = confirm('Are you sure you want to delete this book?')
     
     if(choice) {

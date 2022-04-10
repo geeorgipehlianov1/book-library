@@ -1,7 +1,7 @@
 <div>
     <h3>Hello {{email}}</h3>
     <p>Here you can track your personal library</p>
-<div *ngIf="finalBooks.length == 0">
+<div *ngIf="!finalBooks">
         <p>You dont't have any books yet. You can simply add your first one from here 
             <a routerLink="/add-book">Add Book</a>
         </p>

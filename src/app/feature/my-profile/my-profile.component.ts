@@ -15,22 +15,22 @@ export class MyProfileComponent implements OnInit {
 
   books!: IBook[]
   finalBooks!: IBook[];
-
+  
   email!: string;
-
+  
   constructor(private bookService: GetAllBooksService, private deleteBookService: DeleteService,
     private route: Router, private router: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('userData')!);
-    this.email = user.email
-    this.bookService.getAllBooks().subscribe(book => {
-      this.books = book;
-      this.finalBooks = this.books.filter(book => book._ownerId == user._id)
+    
+    ngOnInit(): void {
+      const user = JSON.parse(localStorage.getItem('userData')!);
+      this.email = user.email
+      this.bookService.getAllBooks().subscribe(book => {
+        this.books = book;
+        this.finalBooks = this.books.filter(book => book._ownerId == user._id)
     })
     
   }
 
-  
+
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
 
   hasUser: boolean = false;
 
@@ -15,6 +15,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
    this.onUser();
   }
+
+  ngDoCheck(): void {
+      this.onUser();
+  }
+
   
   onUser(): void {
     const data = localStorage.getItem('userData');    
@@ -26,7 +31,7 @@ export class HeaderComponent implements OnInit {
 
   logOut(): void {
     localStorage.removeItem('userData')
-    window.location.reload();
+    this.hasUser = false;
     this.router.navigate(['/home'])
   }
 
