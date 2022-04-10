@@ -14,10 +14,12 @@ export class ResponseHandelInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(catchError((err) => {
-      if(err.status === 409) {
+      if(err.status == 409) {
         alert('Username already exist!')
       } else if(err.status == 403) {
         alert('Incorrect username or password!')
+      } else if(err.status == 401) {
+        alert('To do this you have first to register in our website!')
       }
       return throwError(() => err);
     }));
