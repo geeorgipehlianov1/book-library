@@ -35,9 +35,6 @@ export class AddBookComponent implements OnInit {
       type
     }
 
-    console.log(bookData);
-    
-
    this.bookService.addBook(bookData).subscribe(data => {
      this.router.navigate(['/details', data._id])
    })

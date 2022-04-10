@@ -18,6 +18,7 @@ export class MyProfileComponent implements OnInit {
   finalBooks!: IBook[];
   
   email!: string;
+  hasBooks: boolean = true;
   
   constructor(private bookService: GetAllBooksService,
      private deleteBookService: DeleteService,
@@ -32,6 +33,9 @@ export class MyProfileComponent implements OnInit {
       this.bookService.getAllBooks().subscribe(book => {
         this.books = book;
         this.finalBooks = this.books.filter(book => book._ownerId == user._id)
+        if(this.finalBooks.length != 0) {
+          this.hasBooks = false;
+        }
     })
     
   }
