@@ -27,7 +27,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 # book-library
 
-## Startin the server
+## Starting the server
 
 The server is placed in the `src` folder and to start it you should first go to the `src` folder directory and run `node server.js` command in the terminal.
 
